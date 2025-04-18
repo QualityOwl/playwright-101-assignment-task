@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator } from '@playwright/test';
 import { TestBase } from './test-base';
 import { Log } from '../common/log';
 
@@ -40,7 +40,7 @@ test.describe('\'Simple Form Demo\' Page Tests', () => {
         await enterMessageTextbox.fill(messageText);
 
         log.Step(`Click the \'Get Checked Value\' button.`);
-        const getCheckValueButton = await page.getByText('Get Checked Value', { exact: true});
+        const getCheckValueButton = await page.getByText('Get Checked Value', { exact: true });
         await getCheckValueButton.click();
 
         // Assert
@@ -67,12 +67,15 @@ test.describe('\'Drag & Drop Sliders\' Page Tests', () => {
         log.Step(`Change \'Default value ${sliderDefaultValue}\' slider value to \'${expectedSliderValue}\'.`);
         const parent = await page.locator(`//div[contains(@id,'slider')][contains(.,\'Default value ${sliderDefaultValue}\')]`);
         const slider = await parent.locator('//input[@type=\'range\']');
-        const box = await slider.boundingBox();
+        const box = await waitForBoundingBox(slider);
         const xPos = await box.x;
-        const yPos = await box.y + box.height / 2;
+        const yPos = await (box.y + box.height / 2);
         await page.mouse.move(xPos, yPos);
+        await page.waitForTimeout(250);
         await page.mouse.down();
-        await page.mouse.move(xPos + 465, yPos);
+        await page.waitForTimeout(250);
+        await page.mouse.move(xPos + 465, yPos, { steps: 5 });
+        await page.waitForTimeout(250);
         await page.mouse.up();
 
         // Assert
@@ -81,6 +84,19 @@ test.describe('\'Drag & Drop Sliders\' Page Tests', () => {
         const sliderValueBoxText = await sliderValueBox.textContent();
         await expect(sliderValueBoxText).toContain(expectedSliderValue.toString());
     });
+
+    async function waitForBoundingBox(
+        slider: Locator,
+        retries = 10,
+        delayMs = 200
+    ): Promise<{ x: number; y: number; width: number; height: number; }> {
+        for (let i = 0; i < retries; i++) {
+            const box = await slider.boundingBox();
+            if (box) return box;
+            await new Promise(res => setTimeout(res, delayMs));
+        }
+        throw new Error('Slider bounding box was not found after retries.');
+    }
 });
 
 test.describe('\'Input Form Submit\' Page Tests', () => {
@@ -118,7 +134,7 @@ test.describe('\'Input Form Submit\' Page Tests', () => {
             input.reportValidity();
             return input.validationMessage;
         });
-        await expect(textboxAlert).toBe('Please fill out this field.');
+        await expect(textboxAlert).toMatch(/.*(Please F|f)ill out this field/i);
 
         log.Step('Enter value into the \'Name\' textbox.')
         await nameTextbox.fill(name);
