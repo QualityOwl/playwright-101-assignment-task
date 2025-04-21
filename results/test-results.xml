@@ -1,0 +1,18 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="1.9972669999999926">
+<testsuite name="selenium-playground.spec.ts" timestamp="2025-04-21T19:04:02.484Z" hostname="chromium" tests="1" failures="0" skipped="0" time="0.963" errors="0">
+<testcase name="&apos;Simple Form Demo&apos; Page Tests › Validate that the &apos;Your Message&apos; field displays the correct text." classname="selenium-playground.spec.ts" time="0.963">
+<system-out>
+<![CDATA[======== Test started! ========
+Step #  1: Navigate to 'https://www.lambdatest.com/selenium-playground/'.
+Step #  2: Click the 'Simple Form Demo' hyperlink.
+Step #  3: Validate that the user is successfully navigated to the 'simple-form-demo' page.
+Step #  4: Enter 'Welcome to LambdaTest' into the 'Enter Message' text box.
+Step #  5: Click the 'Get Checked Value' button.
+Step #  6: Validate that the 'Your Message:' field displays 'Welcome to LambdaTest'.
+Step #  7: Close browser.
+======== Test completed! ========
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
