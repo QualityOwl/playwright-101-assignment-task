@@ -1,16 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -38,25 +30,65 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
-
     {
-      name: 'webkit',
+      name: 'safari',
       use: { ...devices['Desktop Safari'] },
     },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  ],
+    {
+      name: 'Chrome @ LambdaTest',
+      use: {
+        browserName: 'chromium',
+        connectOptions: {
+          wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
+            JSON.stringify({
+              browserName: 'Chrome',
+              browserVersion: 'latest',
+              'LT:Options': {
+                platform: 'Windows 11',
+                build: 'Playwright 101',
+                name: 'Round #2 Assignment',
+                user: process.env.LT_USERNAME,
+                accessKey: process.env.LT_ACCESS_KEY,
+                network: true,
+                video: true,
+                console: true,
+                geoLocation: 'US',
+                timezone: 'Chicago'
+              },
+            })
+          )}`,
+        },
+      },      
+    },
+    {
+      name: 'Edge @ LambdaTest',
+      use: {
+        browserName: 'chromium',
+        connectOptions: {
+          wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
+            JSON.stringify({
+              browserName: 'MicrosoftEdge',
+              browserVersion: 'latest',
+              'LT:Options': {
+                platform: 'Windows 11',
+                build: 'Playwright 101',
+                name: 'Round #2 Assignment',
+                user: process.env.LT_USERNAME,
+                accessKey: process.env.LT_ACCESS_KEY,
+                network: true,
+                video: true,
+                console: true,
+                geoLocation: 'US',
+                timezone: 'Chicago'
+              },
+            })
+          )}`,
+        },
+      },      
+    }
+  ]
 });

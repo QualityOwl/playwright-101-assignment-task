@@ -45,9 +45,27 @@ test.describe('\'Simple Form Demo\' Page Tests', () => {
 
         // Assert
         log.Step(`Validate that the \'Your Message:\' field displays \'${messageText}\'.`);
-        const yourMessageFieldText = await page.locator('//p[@id=\'message\']').innerText();
+        const yourMessageField = await page.locator('//p[@id=\'message\']');
+        await waitForInnerText(yourMessageField);
+        const yourMessageFieldText = await yourMessageField.textContent();
         await expect(yourMessageFieldText).toBe(messageText);
     });
+
+    async function waitForInnerText(locator: Locator, timeout: number = 5000): Promise<void> {
+        await locator.waitFor({ state: 'attached', timeout });
+
+        const start = Date.now();
+        while (true) {
+            const text = await locator.innerText();
+            if (text.trim() !== '') break;
+
+            if (Date.now() - start > timeout) {
+                throw new Error(`Timeout waiting for non-empty innerText after ${timeout}ms`);
+            }
+
+            await new Promise(res => setTimeout(res, 100)); // Small delay between checks
+        }
+    }
 });
 
 test.describe('\'Drag & Drop Sliders\' Page Tests', () => {
