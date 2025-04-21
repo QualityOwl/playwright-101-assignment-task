@@ -40,7 +40,7 @@ test.describe('\'Simple Form Demo\' Page Tests', () => {
         await enterMessageTextbox.fill(messageText);
 
         log.Step(`Click the \'Get Checked Value\' button.`);
-        const getCheckValueButton = await page.getByText('Get Checked Value', { exact: true });
+        const getCheckValueButton = await page.getByRole( 'button', { name: 'Get Checked Value' });
         await getCheckValueButton.click();
 
         // Assert
