@@ -1,25 +1,11 @@
-import { Browser, test } from '@playwright/test';
+import { Browser } from '@playwright/test';
 import { Log } from '../common/log';
 
-const log = new Log();
-
-export class TestBase {
+export class TestBase {    
+    constructor(private readonly log: Log) {}
+    
     async Cleanup(browser: Browser) {
-        const contexts = browser.contexts();
-
-        log.Step("Close browser.");
-        for (const context of contexts) {
-            await context.close();
-        }
+        this.log.Step("Close browser.");
+        await Promise.all(browser.contexts().map(c => c.close()))
     }
 }
-
-test.beforeAll(async () => {
-    log.HeaderText();
-});
-
-test.afterAll(async () => {
-    log.FooterText();
-});
-
-export default test;

@@ -1,17 +1,14 @@
-import { test, expect, Locator } from '@playwright/test';
-import { TestBase } from './test-base';
-import { Log } from '../common/log';
+import { test } from './fixtures';
+import { expect, Locator } from '@playwright/test';
 
-const testBase = new TestBase();
-const log = new Log();
 const baseUrl = 'https://www.lambdatest.com/selenium-playground/';
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, log }) => {
     log.Step(`Navigate to \'${baseUrl}\'.`);
     await page.goto(baseUrl);
 });
 
-test.afterEach(async ({ browser }) => {
+test.afterEach(async ({ browser, testBase }) => {
     await testBase.Cleanup(browser);
 });
 
@@ -19,7 +16,7 @@ test.describe('\'Simple Form Demo\' Page Tests', () => {
 
     const hyperlinkText = 'Simple Form Demo';
 
-    test('Validate that the \'Your Message\' field displays the correct text.', async ({ page }) => {
+    test('Validate that the \'Your Message\' field displays the correct text.', async ({ page, log }) => {
         // Arrange
         const expectedUrl = 'simple-form-demo';
         const messageText = 'Welcome to LambdaTest';
@@ -40,7 +37,7 @@ test.describe('\'Simple Form Demo\' Page Tests', () => {
         await enterMessageTextbox.fill(messageText);
 
         log.Step(`Click the \'Get Checked Value\' button.`);
-        const getCheckValueButton = await page.getByRole( 'button', { name: 'Get Checked Value' });
+        const getCheckValueButton = await page.getByRole('button', { name: 'Get Checked Value' });
         await getCheckValueButton.click();
 
         // Assert
@@ -72,7 +69,7 @@ test.describe('\'Drag & Drop Sliders\' Page Tests', () => {
 
     const hyperlinkText = 'Drag & Drop Sliders';
 
-    test('Validate that the slider value is successfully changed to value \'95\'.', async ({ page }) => {
+    test('Validate that the slider value is successfully changed to value \'95\'.', async ({ page, log }) => {
         // Arrange
         const sliderDefaultValue = 15;
         const expectedSliderValue = 95;
@@ -121,7 +118,7 @@ test.describe('\'Input Form Submit\' Page Tests', () => {
 
     const hyperlinkText = 'Input Form Submit';
 
-    test('Validate that the \'Form Demo\' page is successfully submitted.', async ({ page }) => {
+    test('Validate that the \'Form Demo\' page is successfully submitted.', async ({ page, log }) => {
         // Arrange
         const name = 'John Doe';
         const email = 'johndoe@email.com';
