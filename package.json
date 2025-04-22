@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/QualityOwl/playwright-101-assignment-task#readme",
   "devDependencies": {
-    "@playwright/test": "^1.51.1",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^22.14.1"
   },
   "dependencies": {
