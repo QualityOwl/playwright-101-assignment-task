@@ -404,3 +404,5 @@ FodyWeavers.xsd
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/results/
+test-results.xml

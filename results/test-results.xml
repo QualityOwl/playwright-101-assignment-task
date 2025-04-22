@@ -1,0 +1,58 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="3.0950219999998807">
+<testsuite name="selenium-playground.spec.ts" timestamp="2025-04-22T17:49:57.559Z" hostname="chromium" tests="3" failures="0" skipped="0" time="4.826" errors="0">
+<testcase name="&apos;Simple Form Demo&apos; Page Tests › Validate that the &apos;Your Message&apos; field displays the correct text." classname="selenium-playground.spec.ts" time="1.347">
+<system-out>
+<![CDATA[
+==== START: Validate that the 'Your Message' field displays the correct text. [PASSED] ====
+Step #  1: Navigate to 'https://www.lambdatest.com/selenium-playground/'.
+Step #  2: Click the 'Simple Form Demo' hyperlink.
+Step #  3: Validate that the user is successfully navigated to the 'simple-form-demo' page.
+Step #  4: Enter 'Welcome to LambdaTest' into the 'Enter Message' text box.
+Step #  5: Click the 'Get Checked Value' button.
+Step #  6: Validate that the 'Your Message:' field displays 'Welcome to LambdaTest'.
+Step #  7: Close browser.
+==== END:   Validate that the 'Your Message' field displays the correct text. [PASSED] ====
+]]>
+</system-out>
+</testcase>
+<testcase name="&apos;Drag &amp; Drop Sliders&apos; Page Tests › Validate that the slider value is successfully changed to value &apos;95&apos;." classname="selenium-playground.spec.ts" time="1.99">
+<system-out>
+<![CDATA[
+==== START: Validate that the slider value is successfully changed to value '95'. [PASSED] ====
+Step #  1: Navigate to 'https://www.lambdatest.com/selenium-playground/'.
+Step #  2: Click the 'Drag & Drop Sliders' hyperlink.
+Step #  3: Change 'Default value 15' slider value to '95'.
+Step #  4: Validate that the 'Default value 15' slider box displays as '95'.
+Step #  5: Close browser.
+==== END:   Validate that the slider value is successfully changed to value '95'. [PASSED] ====
+]]>
+</system-out>
+</testcase>
+<testcase name="&apos;Input Form Submit&apos; Page Tests › Validate that the &apos;Form Demo&apos; page is successfully submitted." classname="selenium-playground.spec.ts" time="1.489">
+<system-out>
+<![CDATA[
+==== START: Validate that the 'Form Demo' page is successfully submitted. [PASSED] ====
+Step #  1: Navigate to 'https://www.lambdatest.com/selenium-playground/'.
+Step #  2: Click the 'Input Form Submit' hyperlink.
+Step #  3: Click the 'Submit' button.
+Step #  4: Validate that the 'Please fill out this field' error message is displayed for the 'Name' field.
+Step #  5: Enter value into the 'Name' textbox.
+Step #  6: Enter value into the 'Email' textbox.
+Step #  7: Enter value into the 'Password' textbox.
+Step #  8: Enter value into the 'Company' textbox.
+Step #  9: Enter value into the 'Website' textbox.
+Step # 10: Enter value into the 'Country' textbox.
+Step # 11: Enter value into the 'City' textbox.
+Step # 12: Enter value into the 'Address 1' textbox.
+Step # 13: Enter value into the 'Address 2' textbox.
+Step # 14: Enter value into the 'State' textbox.
+Step # 15: Enter value into the 'Zip Code' textbox.
+Step # 16: Click the 'Submit' button.
+Step # 17: Validate that the 'Thanks for contacting us, we will get back to you shortly.' message is successfully displayed.
+Step # 18: Close browser.
+==== END:   Validate that the 'Form Demo' page is successfully submitted. [PASSED] ====
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
