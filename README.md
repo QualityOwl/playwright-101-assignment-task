@@ -1,2 +1,44 @@
-# playwright-101-assignment-task
-This is the repository that contains my solution for the Playwright 101 exam through LambdaTest.
+# Playwright (TS) Project
+
+This repository contains my Playwright project written from scratch using TypeScript. The enclosed code is designed to showcase my skills as an automation engineer and demonstrate my understanding of test automation using Playwright.
+
+## Test Results
+
+An example test run with results can be viewed here --> [![Run Playwright Tests](https://github.com/QualityOwl/qowl-demo-playwright/actions/workflows/playwright.yml/badge.svg)](https://github.com/QualityOwl/qowl-demo-playwright/actions/workflows/playwright.yml)
+
+## Getting Started
+
+To get started with this solution, you will need the following installed on your local machine:
+
+- Visual Studio Code (latest version)
+- Node.js (LTS version)
+
+## Installation
+
+1. Clone this repository to your local machine using the following command: `git clone https://github.com/QualityOwl/qowl-demo-playwright.git`
+
+2. Open the project folder in Visual Studio Code.
+
+3. Install the 'Playwright Test for VSCode' extension
+   
+4. Install Playwright using the following command: `npm init playwright@latest`
+   
+5. For more information on installing Playwright, please review the ['Installation'](https://playwright.dev/docs/intro) documentation.
+
+## Usage
+
+The project contains sample test cases that demonstrate how to use Playwright to automate browser interactions. To run the sample test cases, follow these steps:
+
+1. Open the 'TEST EXPLORER' window in Visual Studio Code by selecting 'Testing' from the activity bar.
+
+2. In the 'TEST EXPLORER' window, select any test case of your choice and click the 'Run Test' button.
+
+3. The browser will launch and the test case will execute. You should see the browser navigate to the Google homepage, complete the test steps, and validate the results.
+
+## Contributing
+
+If you find any bugs or issues with this solution, please feel free to open a GitHub issue. I welcome any feedback or contributions that can help improve this solution.
+
+## License
+
+This solution is licensed under the [MIT License](https://opensource.org/license/mit/). Feel free to use this solution in any way you see fit, but please give credit where credit is due.
