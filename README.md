@@ -4,7 +4,7 @@ This repository contains my Playwright project written from scratch using TypeSc
 
 ## Test Results
 
-An example test run with results can be viewed here --> [![Run Playwright Tests](https://github.com/QualityOwl/qowl-demo-playwright/actions/workflows/playwright.yml/badge.svg)](https://github.com/QualityOwl/qowl-demo-playwright/actions/workflows/playwright.yml)
+An example test run with results can be viewed here --> [Playwright Test Results](https://github.com/QualityOwl/qowl-demo-playwright/actions/runs/14604127605)
 
 ## Getting Started
 
@@ -15,15 +15,19 @@ To get started with this solution, you will need the following installed on your
 
 ## Installation
 
-1. Clone this repository to your local machine using the following command: `git clone https://github.com/QualityOwl/qowl-demo-playwright.git`
+1. Clone this repository to your local machine using the following command:
 
-2. Open the project folder in Visual Studio Code.
+  - `git clone https://github.com/QualityOwl/qowl-demo-playwright.git`
 
-3. Install the 'Playwright Test for VSCode' extension
+5. Open the project folder in Visual Studio Code.
+
+6. Install the 'Playwright Test for VSCode' extension
    
-4. Install Playwright using the following command: `npm init playwright@latest`
+7. Install Playwright using the following command:
    
-5. For more information on installing Playwright, please review the ['Installation'](https://playwright.dev/docs/intro) documentation.
+  - `npm init playwright@latest`
+   
+11. For more information on installing Playwright, please review the ['Installation'](https://playwright.dev/docs/intro) documentation.
 
 ## Usage
 
