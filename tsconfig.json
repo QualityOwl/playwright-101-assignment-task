@@ -1,0 +1,7 @@
+{
+    "include":[
+        "tests/**/*.ts",
+        "playwright-extensions.d.ts",
+        "common/fixture.ts"
+    ]
+}
