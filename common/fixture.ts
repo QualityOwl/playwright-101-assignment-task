@@ -1,4 +1,4 @@
-import { test as base, expect, type Locator, type Page } from '@playwright/test';
+import { test as base, type Locator, type Page } from '@playwright/test';
 import { Log } from './log';
 import { TestBase } from './test-base';
 
@@ -36,9 +36,9 @@ export const test = base.extend<{
 
     page: async ({ page }, use) => {
         const sample = page.locator('body');
-        const proto = Object.getPrototypeOf(sample) as any;
+        const prototype = Object.getPrototypeOf(sample) as any;
 
-        patch(proto, 'waitForInnerText', async function (timeoutMS = 5000) {
+        patch(prototype, 'waitForInnerText', async function (timeoutMS = 5000) {
             const sel = (this as any)._selector;
             const start = Date.now();
             while (true) {
@@ -52,7 +52,7 @@ export const test = base.extend<{
             }
         });
 
-        patch(proto, 'fillSafely', async function (value: string, maxAttempts = 3) {
+        patch(prototype, 'fillSafely', async function (value: string, maxAttempts = 3) {
             const sel = (this as any)._selector;
             for (let i = 1; i <= maxAttempts; i++) {
                 await this.fill(value);
@@ -64,7 +64,7 @@ export const test = base.extend<{
             throw new Error(`fillSafely: failed on "${sel}"`);
         });
 
-        patch(proto, 'waitForBoundingBox', async function (
+        patch(prototype, 'waitForBoundingBox', async function (
             retries = 10,
             delayMs = 250
         ): Promise<{ x: number; y: number; width: number, height: number }> {

@@ -1,88 +1,15 @@
-import { test } from '../common/fixture';
+import { test } from '../../common/fixture';
 import { expect } from '@playwright/test';
 
-const baseUrl = 'https://www.lambdatest.com/selenium-playground/';
+const homePage = '/selenium-playground/';
 
 test.beforeEach(async ({ page, log }) => {
-    log.step(`Navigate to \'${baseUrl}\'.`);
-    await page.goto(baseUrl);
+    log.step(`Navigate to \'${homePage}\'.`);
+    await page.goto(`${homePage}`);
 });
 
 test.afterEach(async ({ browser, testBase }) => {
     await testBase.Cleanup(browser);
-});
-
-test.describe('\'Simple Form Demo\' Page Tests', () => {
-
-    const hyperlinkText = 'Simple Form Demo';
-
-    test('Validate that the \'Your Message\' field displays the correct text.', async ({ page, log }) => {
-        // Arrange
-        const expectedUrl = 'simple-form-demo';
-        const messageText = 'Welcome to LambdaTest';
-
-        // Act
-        log.step(`Click the \'${hyperlinkText}\' hyperlink.`);
-        const hyperlink = await page.getByRole('link', { name: hyperlinkText });
-        await hyperlink.click();
-
-        // Assert
-        log.step(`Validate that the user is successfully navigated to the \'${expectedUrl}\' page.`);
-        const currentPageUrl = await page.url();
-        await expect(currentPageUrl).toContain(expectedUrl);
-
-        // Act
-        log.step(`Enter \'${messageText}\' into the \'Enter Message\' text box.`);
-        const enterMessageTextbox = await page.locator('//input[@id=\'user-message\']');
-        await enterMessageTextbox.fillSafely(messageText);
-
-        log.step(`Click the \'Get Checked Value\' button.`);
-        const getCheckValueButton = await page.getByRole('button', { name: 'Get Checked Value' });
-        await getCheckValueButton.click();
-
-        // Assert
-        log.step(`Validate that the \'Your Message:\' field displays \'${messageText}\'.`);
-        const yourMessageField = await page.locator('//p[@id=\'message\']');
-        await yourMessageField.waitForInnerText();
-        const yourMessageFieldText = await yourMessageField.textContent();
-        await expect(yourMessageFieldText).toBe(messageText);
-    });
-});
-
-test.describe('\'Drag & Drop Sliders\' Page Tests', () => {
-
-    const hyperlinkText = 'Drag & Drop Sliders';
-
-    test('Validate that the slider value is successfully changed to value \'95\'.', async ({ page, log }) => {
-        // Arrange
-        const sliderDefaultValue = 15;
-        const expectedSliderValue = 95;
-
-        // Act
-        log.step(`Click the \'${hyperlinkText}\' hyperlink.`);
-        const hyperlink = await page.getByRole('link', { name: hyperlinkText });
-        await hyperlink.click();
-
-        log.step(`Change \'Default value ${sliderDefaultValue}\' slider value to \'${expectedSliderValue}\'.`);
-        const parent = await page.locator(`//div[contains(@id,'slider')][contains(.,\'Default value ${sliderDefaultValue}\')]`);
-        const slider = await parent.locator('//input[@type=\'range\']');
-        const box = await slider.waitForBoundingBox();
-        const xPos = await box.x;
-        const yPos = await (box.y + box.height / 2);
-        await page.mouse.move(xPos, yPos);
-        await page.waitForTimeout(250);
-        await page.mouse.down();
-        await page.waitForTimeout(250);
-        await page.mouse.move(xPos + 465, yPos, { steps: 5 });
-        await page.waitForTimeout(250);
-        await page.mouse.up();
-
-        // Assert
-        log.step(`Validate that the \'Default value ${sliderDefaultValue}\' slider box displays as \'${expectedSliderValue}\'.`);
-        const sliderValueBox = await parent.locator('//output[contains(@id,\'range\')]');
-        const sliderValueBoxText = await sliderValueBox.textContent();
-        await expect(sliderValueBoxText).toContain(expectedSliderValue.toString());
-    });
 });
 
 test.describe('\'Input Form Submit\' Page Tests', () => {
