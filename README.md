@@ -19,15 +19,15 @@ To get started with this solution, you will need the following installed on your
 
   - `git clone https://github.com/QualityOwl/qowl-demo-playwright.git`
 
-5. Open the project folder in Visual Studio Code.
+2. Open the project folder in Visual Studio Code.
 
-6. Install the 'Playwright Test for VSCode' extension
+3. Install the 'Playwright Test for VSCode' extension
    
-7. Install Playwright using the following command:
+4. Install Playwright using the following command:
    
   - `npm init playwright@latest`
    
-11. For more information on installing Playwright, please review the ['Installation'](https://playwright.dev/docs/intro) documentation.
+5. For more information on installing Playwright, please review the ['Installation'](https://playwright.dev/docs/intro) documentation.
 
 ## Usage
 
